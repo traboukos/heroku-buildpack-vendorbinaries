@@ -1,31 +1,37 @@
 #!/bin/bash
+ 
+# installation of Oracle Java JDK.
+apt-get -y update
+apt-get -y install python-software-properties
+add-apt-repository -y ppa:webupd8team/java
+apt-get -y update
+apt-get -y install oracle-java7-installer
 
+# Installation of commonly used python scipy tools
+apt-get -y install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
-indent() {
-  sed -u 's/^/       /'
-}
+# Installation of scala
+wget http://www.scala-lang.org/files/archive/scala-2.11.1.deb
+dpkg -i scala-2.11.1.deb
+apt-get -y update
+apt-get -y install scala
 
-echo "-----> Found a .vendor_urls file"
+# Installation of sbt
+wget http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt//0.12.3/sbt.deb
+dpkg -i sbt.deb
+apt-get -y update
+apt-get -y install sbt
 
-# Bail early but noisily
-if [ ! -s $1/.vendor_urls ]; then
-  echo ".vendor_urls empty. Skipping." | indent
-  exit 0
-fi
+# Downloading spark
+wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
+tar -zxf spark-2.1.0.tgz
+cd spark-2.1.0
 
-cd $1
+# Building spark
+./sbt/sbt assembly
 
-while read url; do
-  if [ -n "$url" ]; then # incase ensure_newline_at_eof_on_save is enabled
-    echo Vendoring $url | indent
-
-    extension="${url##*.}" # http://stackoverflow.com/q/965053
-    flag="-z" # by default use gz
-    if [ "$extension" == "xz" ]; then flag="--xz"
-    elif [ "$extension" == "bz2" ]; then flag="--bzip2"
-    elif [ "$extension" == "tar" ]; then flag=""  # no compression
-    fi
-
-    curl -L --silent $url | tar x $flag
-  fi
-done < .vendor_urls
+# Clean-up
+rm scala-2.11.1.deb
+rm sbt.deb
+rm spark-1.0.0.tgz
+rm install.sh
