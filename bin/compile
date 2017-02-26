@@ -10,10 +10,7 @@ tar -zxf spark-2.1.0.tgz
 wget https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz
 tar -zxf sbt-0.13.13.tgz
 
-ls $BUILD_DIR
-echo app****
-ls /app
-
 # Building spark
-$BUILD_DIR/sbt-0.13.13/bin/sbt assembly spark-2.1.0
+cd spark-2.1.0
+$BUILD_DIR/sbt-launcher-packaging-0.13.13/bin/sbt assembly
 
