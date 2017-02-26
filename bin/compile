@@ -10,8 +10,8 @@ cd spark-2.1.0
 
 
 ls -lah $BUILD_DIR/.apt/usr/bin
-cd $BUILD_DIR/.apt/usr/bin
-./sbt
+
+$BUILD_DIR/.apt/usr/bin/scala --version
 
 # Building spark
-sbt assembly
+$BUILD_DIR/.apt/usr/bin/sbt assembly
