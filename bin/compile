@@ -1,37 +1,10 @@
 #!/bin/bash
- 
-# installation of Oracle Java JDK.
-apt-get -y update
-apt-get -y install python-software-properties
-add-apt-repository -y ppa:webupd8team/java
-apt-get -y update
-apt-get -y install oracle-java7-installer
-
-# Installation of commonly used python scipy tools
-apt-get -y install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
-
-# Installation of scala
-wget http://www.scala-lang.org/files/archive/scala-2.11.1.deb
-dpkg -i scala-2.11.1.deb
-apt-get -y update
-apt-get -y install scala
-
-# Installation of sbt
-wget http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt//0.12.3/sbt.deb
-dpkg -i sbt.deb
-apt-get -y update
-apt-get -y install sbt
 
 # Downloading spark
+cd /app
 wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
 # Building spark
 ./sbt/sbt assembly
-
-# Clean-up
-rm scala-2.11.1.deb
-rm sbt.deb
-rm spark-1.0.0.tgz
-rm install.sh
