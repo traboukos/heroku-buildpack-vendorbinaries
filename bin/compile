@@ -1,7 +1,6 @@
 #!/bin/bash
 
-BUILD_DIR=$1
-ls $BUILD_DIR/.apt
+BUILD_DIR=$1 
 
 # Downloading spark
 cd /app
@@ -9,9 +8,5 @@ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
-CACHE_DIR=$2
-ls $CACHE_DIR/apt/cache/archives/
-ls $CACHE_DIR/apt/cache/archives/sbt
-
 # Building spark
-sbt assembly
+$BUILD_DIR/.apt/usr/bin/sbt assembly
