@@ -8,6 +8,7 @@ cd spark-2.1.0
 
 ls /app/.apt/ 
 ls /app/.apt/sbt
+ls /app/
 
 # Building spark
 sbt assembly
