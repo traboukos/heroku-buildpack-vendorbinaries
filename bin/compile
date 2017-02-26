@@ -3,10 +3,13 @@
 BUILD_DIR=$1 
 
 # Downloading spark
-cd /app
+cd $BUILD_DIR
 wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
-cd spark-2.1.0
+
+wget https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz
+tar -zxf sbt-0.13.13.tgz
 
 # Building spark
-sbt assembly
+$BUILD_DIR/sbt-0.13.13/bin/sbt assembly spark-2.1.0
+
