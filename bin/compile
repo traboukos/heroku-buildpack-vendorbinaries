@@ -11,4 +11,4 @@ cd spark-2.1.0
 ls -lah $BUILD_DIR/.apt/usr/bin
 
 # Building spark
-$BUILD_DIR/.apt/usr/bin/sbt assembly
+/usr/share/sbt-launcher-packaging/bin/sbt assembly
