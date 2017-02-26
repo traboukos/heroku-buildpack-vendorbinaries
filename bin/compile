@@ -8,7 +8,10 @@ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
+
 ls -lah $BUILD_DIR/.apt/usr/bin
+cd $BUILD_DIR/.apt/usr/bin
+./sbt
 
 # Building spark
-/usr/share/sbt-launcher-packaging/bin/sbt assembly
+sbt assembly
