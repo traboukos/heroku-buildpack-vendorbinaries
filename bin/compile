@@ -7,7 +7,7 @@ tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
 CACHE_DIR=$2
-$CACHE_DIR/apt/cache
+ls $CACHE_DIR/apt/cache
 
 # Building spark
 sbt assembly
