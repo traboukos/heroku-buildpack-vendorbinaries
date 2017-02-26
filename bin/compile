@@ -6,13 +6,7 @@ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
-ls /app/.apt/ 
-ls /app/.apt/sbt
-ls /app/
-ls /
-ls /usr/local
-ls /usr
-ls /bin
+scala --version
 
 # Building spark
 sbt assembly
