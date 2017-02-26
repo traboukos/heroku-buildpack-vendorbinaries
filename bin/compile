@@ -6,7 +6,8 @@ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
 tar -zxf spark-2.1.0.tgz
 cd spark-2.1.0
 
-$CACHE_DIR/apt/cach
+CACHE_DIR=$2
+$CACHE_DIR/apt/cache
 
 # Building spark
 sbt assembly
