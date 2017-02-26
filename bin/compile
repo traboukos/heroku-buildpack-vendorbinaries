@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BUILD_DIR=$1
+ls $BUILD_DIR/.apt
+
 # Downloading spark
 cd /app
 wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0.tgz
